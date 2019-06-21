@@ -1,8 +1,3 @@
-dyn.load('/usr/local/cuda/lib64/libcublas.so.10.0')
-dyn.load('/usr/local/cuda/lib64/libcusolver.so.10.0')
-dyn.load('/usr/local/cuda/lib64/libcudart.so.10.0')
-dyn.load('/usr/local/cuda/lib64/libcudnn.so.7')
-
 #https://medium.com/@albertoarrigoni/paper-review-code-deep-ensembles-nips-2017-c5859070b8ce
 #https://blogs.rstudio.com/tensorflow/posts/2018-11-12-uncertainty_estimates_dropout/
 #https://github.com/yaringal/ConcreteDropout/blob/master/concrete-dropout-keras.ipynb

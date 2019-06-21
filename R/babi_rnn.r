@@ -93,6 +93,7 @@ path <- get_file(
   fname = "babi-tasks-v1-2.tar.gz",
   origin = "https://s3.amazonaws.com/text-datasets/babi_tasks_1-20_v1-2.tar.gz"
 )
+#path = "/Users/chan/.keras/datasets/babi-tasks-v1-2.tar.gz"
 untar(path, exdir = str_replace(path, fixed(".tar.gz"), "/"))
 path <- str_replace(path, fixed(".tar.gz"), "/")
 
