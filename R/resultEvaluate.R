@@ -4,6 +4,9 @@ sigmaTiles = 10
 prediction <- prediction %>% dplyr::mutate(quantile = ntile(sigmas,sigmaTiles))
 #prediction <- prediction %>% dplyr::mutate(quantile = ntile(entropy,sigmaTiles))
 
+aggregate(prediction$sigmas,by=list(prediction$quantile),mean)
+
+
 #function for Brier Score
 brierScore <- function(prediction){
     
@@ -50,6 +53,7 @@ aucBySigmaList<-lapply(predictionSplit, FUN = function(x){
                            # FP = FP,
                            # FN = FN, 
                            auroc = pROC::auc(rocResult), 
+                           sigmaMean = mean(x$sigmas),
                            #aurocCi = pROC::ci.auc(rocResult),
                            auprc = pr$auc.integral,
                            accuracy = as.data.frame(t(allValue))$accuracy,
@@ -64,6 +68,7 @@ aucBySigmaList<-lapply(predictionSplit, FUN = function(x){
 
 aucBySigma = do.call("rbind",aucBySigmaList) 
 
+plot(aucBySigma$sigmaMean)
 plot(aucBySigma$positiveProp)
 plot(aucBySigma$auroc)
 plot(aucBySigma$auprc)
@@ -132,3 +137,5 @@ plot(aucBySigma$auprc)
 plot(aucBySigma$sensitivity)
 plot(aucBySigma$specificity)
 plot(aucBySigma$stratumThreshold)
+
+
